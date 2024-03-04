@@ -1,35 +1,53 @@
 <template>
   <div class="slider-box">
     <div class="slider-left-btn-box">
-      <button class="slider-left-btn">Left</button>
+      <button class="slider-left-btn" @click="slideToLeftFunc">
+        <icons icon-name="arrowLeft"/>
+      </button>
     </div>
-    <div class="slider-images-content">
+    <div id="slider-images-box" class="slider-images-content">
       <div class="slider-image-box" v-for="image in sliderImages" :key="image">
         <img class="slider-image" :src="image" alt="room-image" />
       </div>
     </div>
     <div class="slider-right-btn-box">
-      <button class="slider-right-btn" @click="slideToRightFunc">Right</button>
+      <button class="slider-right-btn" @click="slideToRightFunc">
+        <icons icon-name="arrowRight"/>
+      </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-let slideToRight = ref(0)
+
+import Icons from "~/components/Icons.vue";
+
 let sliderImages = ref([
   "/rooms/2-room(1).jpg",
   "/rooms/2-room(2).jpg",
   "/rooms/2-room(3).jpg",
   "/rooms/2-room(4).jpg",
-    '/rooms/2-room(5).jpg'
+  '/rooms/2-room(5).jpg'
 ]);
 
 function slideToRightFunc() {
-
+  let elem: HTMLElement | null = document.getElementById('slider-images-box')
+  if(elem) elem.scrollLeft += 200
+}
+function slideToLeftFunc() {
+  let elem: HTMLElement | null = document.getElementById('slider-images-box')
+  if(elem) {
+    if (elem && elem.scrollLeft < 0) {
+      elem.scrollLeft = 0;
+      return
+    }
+    elem.scrollLeft -= 200
+  }
 }
 </script>
 
 <style scoped>
+
 .slider-box {
   display: flex;
   width: max-content;
@@ -43,13 +61,26 @@ function slideToRightFunc() {
   display: flex;
   align-items: center;
 }
+.slider-right-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.slider-left-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
 .slider-images-content {
   display: flex;
   width: 1100px;
+  overflow: hidden;
 }
 .slider-image-box {
   padding: 10px;
+
 }
+
 .slider-image {
   width: 500px;
   height: 350px;
