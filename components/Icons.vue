@@ -1,10 +1,3 @@
-<script setup lang="ts">
-const props = defineProps<{
-  iconName: string;
-}>();
-let name = ref(props.iconName);
-</script>
-
 <template>
   <template v-if="name === 'arrowRight'">
     <svg
@@ -35,5 +28,12 @@ let name = ref(props.iconName);
   </template>
   <template v-else><span></span></template>
 </template>
+
+<script setup lang="ts">
+const props = defineProps<{
+  iconName: string;
+}>();
+let name = ref(props.iconName);
+</script>
 
 <style scoped></style>
