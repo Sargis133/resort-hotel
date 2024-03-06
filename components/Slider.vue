@@ -76,7 +76,7 @@ function slideToLeftFunc() {
 }
 .slider-images-content {
   display: flex;
-  width: 1100px;
+  width: 90vw;
   overflow: hidden;
   scroll-behavior: smooth;
 
@@ -88,7 +88,7 @@ function slideToLeftFunc() {
 
 
 .slider-image {
-  width: 500px;
-  height: 350px;
+  width: 50vw;
+  height: 100%;
 }
 </style>
