@@ -65,7 +65,7 @@ function onRotatePalm(type: string) {
       rPalm.style.cssText = 'transform: rotate(16deg); right: -150px; transition: all 2s;'
     } else {
       lPalm.style.cssText = 'transform: rotate(0deg); left: 0; transition: all 1s;'
-      rPalm.style.cssText = 'transform: rotate(0deg); right: 0; transition: all 1s;'
+      rPalm.style.cssText = 'transform: rotate(0deg); right: -30px; transition: all 1s;'
     }
   }
 }
@@ -90,6 +90,7 @@ if(process.client) {
 </script>
 
 <style scoped>
+
 .hide {
   opacity: 0;
 }
@@ -105,7 +106,8 @@ if(process.client) {
   font-family: sans-serif;
   font-size: 40px;
   color: whitesmoke;
-  max-width: max-content;
+  width: 100vw;
+  text-align: center;
   text-shadow: 1px 1px 8px black;
 }
 
@@ -116,6 +118,7 @@ if(process.client) {
   background-repeat: no-repeat;
   background-attachment: fixed;
   padding: 20em 20em;
+  width: 100%;
   height: 100vh;
   position: relative;
   display: flex;
@@ -166,7 +169,7 @@ if(process.client) {
   margin-top: 20px;
   text-align: center;
   background-color: rgba(0,0,0, 0.8);
-  padding: 2% 10%;
+  padding: 2em 10em;
   position: relative;
   overflow: hidden;
 }
