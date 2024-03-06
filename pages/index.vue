@@ -64,7 +64,9 @@ if(process.client) {
         }
         if(roomTitle && roomTitle.getBoundingClientRect().top - window.scrollY < -300) {
           onShowTtitleFunc('roomTitle', 'show')
-        } else onShowTtitleFunc('roomTitle', 'hide')
+        } else {
+          onShowTtitleFunc('roomTitle', 'hide')
+        }
   })
 }
 
