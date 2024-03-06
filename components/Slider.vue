@@ -5,7 +5,7 @@
         <icons icon-name="arrowLeft"/>
       </button>
     </div>
-    <div id="slider-images-box" class="slider-images-content">
+    <div id="slider-images-box" class="slider-images-content" >
       <div class="slider-image-box" v-for="image in sliderImages" :key="image">
         <img class="slider-image" :src="image" alt="room-image" />
       </div>
@@ -32,7 +32,7 @@ let sliderImages = ref([
 
 function slideToRightFunc() {
   let elem: HTMLElement | null = document.getElementById('slider-images-box')
-  if(elem) elem.scrollLeft += 200
+  if(elem) elem.scrollLeft += 240
 }
 function slideToLeftFunc() {
   let elem: HTMLElement | null = document.getElementById('slider-images-box')
@@ -41,9 +41,12 @@ function slideToLeftFunc() {
       elem.scrollLeft = 0;
       return
     }
-    elem.scrollLeft -= 200
+    elem.scrollLeft -= 240
   }
 }
+
+
+
 </script>
 
 <style scoped>
@@ -75,11 +78,14 @@ function slideToLeftFunc() {
   display: flex;
   width: 1100px;
   overflow: hidden;
+  scroll-behavior: smooth;
+
 }
 .slider-image-box {
   padding: 10px;
 
 }
+
 
 .slider-image {
   width: 500px;
