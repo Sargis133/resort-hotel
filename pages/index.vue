@@ -29,8 +29,9 @@
         </div>
       </div>
       <div class="rooms-content">
+        <div class="rooms-content__bg-image"></div>
         <div class="rooms-content__title">
-          <h3 class="titles-style">Choose Your Room</h3>
+          <h3 id="roomTitle" class="titles-style">Choose Your Room</h3>
         </div>
         <div class="rooms-content__rooms-aside">
           <div class="rooms-aside__rooms-slide">
@@ -44,45 +45,26 @@
 </template>
 
 <script setup lang="ts">
-function onShowTextOpacity(id: string, type: string) {
-  let elem: HTMLElement | null = document.getElementById(id)
-    if (elem) {
-      if(type === 'show') {
-        elem.classList.remove('hide')
-        elem.classList.add('show')
-      } else {
-        elem.classList.remove('show')
-        elem.classList.add('hide')
-      }
-    }
-}
-function onRotatePalm(type: string) {
-  let lPalm: HTMLElement | null = document.getElementById('lPalm');
-  let rPalm: HTMLElement | null = document.getElementById('rPalm');
-  if(lPalm && rPalm) {
-    if(type === 'show') {
-      lPalm.style.cssText = 'transform: rotate(-16deg); left: -150px;transition: all 2s;'
-      rPalm.style.cssText = 'transform: rotate(16deg); right: -150px; transition: all 2s;'
-    } else {
-      lPalm.style.cssText = 'transform: rotate(0deg); left: 0; transition: all 1s;'
-      rPalm.style.cssText = 'transform: rotate(0deg); right: -30px; transition: all 1s;'
-    }
-  }
-}
+import {onRotatePalmFunc} from "~/components/templates/index/utils/rotatePalm";
+import {onShowTtitleFunc} from "~/components/templates/index/utils/showTitles";
 
-onMounted(() => onShowTextOpacity('firstTitle', 'show'))
+
+onMounted(() => onShowTtitleFunc('firstTitle', 'show'))
 
 if(process.client) {
   window.addEventListener('scroll', function() {
     let aboutSection = document.getElementById('aboutTitle')
+    let roomTitle = document.getElementById('roomTitle')
         if(aboutSection && aboutSection.getBoundingClientRect().top - window.scrollY < -100) {
-          onShowTextOpacity('aboutTitle','show')
-          onRotatePalm('show')
+          onShowTtitleFunc('aboutTitle','show')
+          onRotatePalmFunc('show')
         } else {
-          onRotatePalm('hide')
-          onShowTextOpacity('aboutTitle', 'hide')
+          onRotatePalmFunc('hide')
+          onShowTtitleFunc('aboutTitle', 'hide')
         }
-
+        if(roomTitle && roomTitle.getBoundingClientRect().top - window.scrollY < -300) {
+          onShowTtitleFunc('roomTitle', 'show')
+        } else onShowTtitleFunc('roomTitle', 'hide')
   })
 }
 
@@ -90,6 +72,9 @@ if(process.client) {
 </script>
 
 <style scoped>
+@import "assets/css/resort.css";
+@import "assets/css/about.css";
+@import "assets/css/rooms.css";
 
 .hide {
   opacity: 0;
@@ -100,8 +85,6 @@ if(process.client) {
 .main {
   width: 100%;
 }
-
-
 .titles-style {
   font-family: sans-serif;
   font-size: 40px;
@@ -110,119 +93,19 @@ if(process.client) {
   text-align: center;
   text-shadow: 1px 1px 8px black;
 }
-
-.resort-content {
-  background-image: url("assets/images/main/resort-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  padding: 20em 20em;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 #firstTitle {
   transition: opacity 1s;
 }
-
-.about-content {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-}
-.about-content-bg-image {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  top: 0;
-  background-image: url("assets/images/main/about-bg.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  filter: blur(1px);
-}
-.about-content__about-description {
-  display: flex;
-  flex-direction: column;
-  grid-column-gap: 20px;
-  justify-content: center;
-}
-.about-description__title-box {
-  display: flex;
-  justify-content: center;
-}
 #aboutTitle {
-  transition: all 1s;
+  transition: all 800ms;
 }
-.about-description__description-box {
-  margin-top: 20px;
-  text-align: center;
-  background-color: rgba(0,0,0, 0.8);
-  padding: 2em 10em;
-  position: relative;
-  overflow: hidden;
-}
-.about-description__description-box p {
-  color: whitesmoke;
-  font-family: sans-serif;
-  font-size: 17px;
-  text-shadow: 1px 1px 8px black;
-  margin-top: 20px;
-}
-
-.about-palm-left {
-  width: 300px;
-  height: 300px;
-  background-image: url("assets/images/main/about-palm.png");
-  background-size: cover;
-  background-position: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.about-palm-right {
-  width: 300px;
-  height: 300px;
-  background-image: url("assets/images/main/about-right-palm.png");
-  background-size: cover;
-  background-position: center;
-  position: absolute;
-  top: 0;
-  right: -36px;
+#roomTitle {
+  transition: all 800ms;
 }
 
 
-.rooms-content {
-  padding-top: 25px;
-  background-image: url("assets/images/main/room-bg.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.rooms-content__title {
-  display: flex;
-  justify-content: center;
-  padding: 15px;
-}
-.rooms-content__rooms-aside {
-  padding: 20px;
-}
-.rooms-aside__rooms-slide {
-  display: flex;
-  justify-content: center;
-}
+
+
 
 
 
