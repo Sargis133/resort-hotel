@@ -1,0 +1,30 @@
+.rooms-content {
+    padding-top: 25px;
+    position: relative;
+}
+.rooms-content__bg-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    background-image: url("assets/images/main/room-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: blur(1px);
+}
+.rooms-content__title {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+.rooms-content__rooms-aside {
+    padding: 20px;
+}
+.rooms-aside__rooms-slide {
+    display: flex;
+    justify-content: center;
+}

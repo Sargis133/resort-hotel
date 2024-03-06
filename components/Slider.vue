@@ -79,7 +79,6 @@ function slideToLeftFunc() {
   width: 90vw;
   overflow: hidden;
   scroll-behavior: smooth;
-
 }
 .slider-image-box {
   padding: 10px;
