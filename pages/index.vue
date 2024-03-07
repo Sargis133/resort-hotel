@@ -91,7 +91,7 @@ if(process.client) {
   font-family: sans-serif;
   font-size: 40px;
   color: whitesmoke;
-  width: 100vw;
+  width: 95vw;
   text-align: center;
   text-shadow: 1px 1px 8px black;
 }
