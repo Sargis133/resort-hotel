@@ -36,7 +36,9 @@
         <div class="rooms-content__rooms-aside">
           <div class="rooms-aside__rooms-slide">
             <Slider/>
-
+          </div>
+          <div class="rooms-aside__rooms-book">
+            <Book/>
           </div>
         </div>
       </div>
@@ -104,7 +106,12 @@ if(process.client) {
 #roomTitle {
   transition: all 800ms;
 }
-
+.rooms-aside__rooms-book {
+  margin-top: 30px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: center;
+}
 
 
 
