@@ -129,7 +129,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   iconName: string;
-  iconClass: string;
+  iconClass?: string;
 }>();
 const name = ref(props.iconName);
 const styles = ref(props.iconClass)
