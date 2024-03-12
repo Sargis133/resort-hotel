@@ -72,7 +72,7 @@
       <div class="user-data-box__email-box">
         <input
           class="user-data-input"
-          :class="{'errorInput': !errorEmailInput}"
+          :class="{'errorInput': errorEmailInput}"
           placeholder="Email"
           type="text"
           v-model="userData.email"
@@ -133,10 +133,9 @@ const nameValidateFunc = (input: any): void => {
 const emailValidateFunc = (input: any): void => {
   let val = input.target.value;
   let reg = /^[A-Za-z0-9]+(@gmail.com)|(@mail.ru)$/g
-  errorEmailInput.value = !val || reg.test(val)
+  setTimeout(() => errorEmailInput.value = val && !reg.test(val), 500)
 }
 const phoneValidateFunc = (input: any):void => {
-  let val = input.target.value;
 
 }
 function setMinDateFunc(): void {
@@ -282,6 +281,8 @@ onMounted(() => setMinDateFunc());
   border-radius: 8px;
   color: whitesmoke;
   outline: none;
+  transition: box-shadow 500ms;
+
 }
 .user-data-input:focus {
   box-shadow: 0 0 1px 1px white;
