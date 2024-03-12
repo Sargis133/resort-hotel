@@ -2,7 +2,7 @@
   <div class="slider-box">
     <div class="slider-left-btn-box">
       <button class="slider-left-btn" @click="slideToLeftFunc">
-        <icons icon-name="arrowLeft"/>
+        <icons icon-name="arrowLeft" icon-class="fill: white;"/>
       </button>
     </div>
     <div id="slider-images-box" class="slider-images-content" >
@@ -12,7 +12,7 @@
     </div>
     <div class="slider-right-btn-box">
       <button class="slider-right-btn" @click="slideToRightFunc">
-        <icons icon-name="arrowRight"/>
+        <icons icon-name="arrowRight" icon-class="fill: white;"/>
       </button>
     </div>
   </div>
