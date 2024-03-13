@@ -125,11 +125,8 @@ const onHavePetFunc = (e: any): void => {
   userData.value.pet = !!e.target.value;
 };
 const nameValidateFunc = (input: any): void => {
-  let val = input.target.value;
-  let reg = /^[A-Za-z]+$/g;
-  userData.value.name = reg.test(val)
-    ? val
-    : userData.value.name.replace(/[\W\d]/g, "");
+  let value = input.target.value;
+  userData.value.name = value.replace(/[^+[A-Za-z]/g, '')
 };
 const emailValidateFunc = (input: any): void => {
   let val = input.target.value;
@@ -137,7 +134,8 @@ const emailValidateFunc = (input: any): void => {
   setTimeout(() => errorEmailInput.value = val && !reg.test(val), 500)
 }
 const phoneValidateFunc = (input: any):void => {
-
+  let value = input.target.value
+  userData.value.phone = value.replace(/[^+\d]/g, '')
 }
 function setMinDateFunc(): void {
   let minDate: any = document.getElementById("min-date");
