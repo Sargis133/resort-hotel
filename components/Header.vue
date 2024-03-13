@@ -7,7 +7,7 @@
           src="/assets/images/logo/logo.png"
           alt="logo"
         />
-        <p class="header-logo-box__title">Palma Resort</p>
+        <button class="header-logo-box__title" @click="onScrollToTopFunc">Palma Resort</button>
       </div>
     </div>
     <div class="header-content__header-navbar-aside">
@@ -22,18 +22,63 @@
             </button>
           </li>
           <li>
-            <button class="header-navbar-list__button" @click="onScrollToRoomsFunc"
-              >Rooms</button
+            <button
+              class="header-navbar-list__button"
+              @click="onScrollToRoomsFunc"
             >
+              Rooms
+            </button>
           </li>
-          <li>
-            <button class="header-navbar-list__button" >Contacts</button>
+          <li class="header-navbar-list__contacts-box">
+            <button
+              class="header-navbar-list__button"
+              @click="onShowContactsFunc"
+            >
+              Contacts
+            </button>
+            <div
+              class="header-navbar-list__contacts-options-box"
+              :class="{ hide: !isShowContacts }"
+            >
+              <div class="contacts-options-box__contact-item">
+                <NuxtLink
+                  class="contact-item__link"
+                  to="https://www.facebook.com/?locale=ru_RU"
+                  target="_blank"
+                >
+                  <icons icon-name="facebook" />
+                  <p>Facebook</p>
+                </NuxtLink>
+              </div>
+              <div class="contacts-options-box__contact-item">
+                <NuxtLink
+                  class="contact-item__link"
+                  to="https://www.google.com/intl/ru/gmail/about/"
+                  target="_blank"
+                >
+                  <icons icon-name="gmail" />
+                  <p>Gmail</p>
+                </NuxtLink>
+              </div>
+              <div class="contacts-options-box__contact-item">
+                <NuxtLink
+                  class="contact-item__link"
+                  to="https://www.instagram.com/"
+                  target="_blank"
+                >
+                  <icons icon-name="instagram" />
+                  <p>Instagram</p>
+                </NuxtLink>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
     </div>
     <div class="header-content__header-book-room">
-      <button class="header-book-room__button" @click="onScrollToBookFunc">BOOK NOW</button>
+      <button class="header-book-room__button" @click="onScrollToBookFunc">
+        BOOK NOW
+      </button>
     </div>
   </div>
 </template>
@@ -41,35 +86,46 @@
 <script setup lang="ts">
 const route = useRoute();
 
+let isShowContacts = ref(false);
+function onShowContactsFunc() {
+  isShowContacts.value = !isShowContacts.value;
+}
+function onScrollToTopFunc() {
+  scrollTo({
+    left: 0,
+    top: 0,
+    behavior: "smooth",
+  })
+}
 function onScrollToBookFunc() {
   scrollTo({
     left: 0,
     top: 1500,
     behavior: "smooth",
-  })
+  });
 }
-function onScrollToRoomsFunc () {
-  let roomsBox = document.querySelector('.rooms-aside__rooms-slide')
-  if(roomsBox) {
+function onScrollToRoomsFunc() {
+  let roomsBox = document.querySelector(".rooms-aside__rooms-slide");
+  if (roomsBox) {
     scrollTo({
       left: 0,
       top: roomsBox.getBoundingClientRect().top + window.scrollY - 135,
       behavior: "smooth",
-    })
+    });
   }
 }
 function onScrollToAboutFunc() {
   if (route.path === "/") {
-    scrollToAbout()
+    scrollToAbout();
   } else if (route.path !== "/") {
     navigateTo("/");
-    setTimeout(() => scrollToAbout(), 500)
+    setTimeout(() => scrollToAbout(), 500);
   }
 
   function scrollToAbout() {
     let aboutContent: HTMLElement | null =
       document.querySelector(".about-content");
-    if(aboutContent) {
+    if (aboutContent) {
       window.scrollTo({
         top: aboutContent.offsetTop,
         left: 0,
@@ -81,6 +137,10 @@ function onScrollToAboutFunc() {
 </script>
 
 <style scoped>
+.hide {
+  opacity: 0;
+}
+
 .header-box {
   display: flex;
   justify-content: space-between;
@@ -113,9 +173,11 @@ function onScrollToAboutFunc() {
 }
 .header-logo-box__title {
   color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
   font-family: sans-serif;
   font-size: 18px;
-  width: max-content;
   padding-left: 30px;
 }
 
@@ -150,5 +212,28 @@ function onScrollToAboutFunc() {
 .header-book-room__button:hover {
   background-color: #fee80a;
   color: black;
+}
+.header-navbar-list__contacts-options-box {
+  position: absolute;
+  transition: opacity 500ms;
+  top: 30px;
+  z-index: 70;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.header-navbar-list__contacts-box {
+  position: relative;
+}
+.contacts-options-box__contact-item {
+  padding: 5px;
+}
+.contact-item__link {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  color: whitesmoke;
+  font-family: sans-serif;
+}
+.contact-item__link:hover {
+  opacity: 0.8;
 }
 </style>
