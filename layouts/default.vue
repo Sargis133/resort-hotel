@@ -20,7 +20,7 @@
 .header-content {
   position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 50;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
 }
