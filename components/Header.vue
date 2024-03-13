@@ -98,11 +98,14 @@ function onScrollToTopFunc() {
   })
 }
 function onScrollToBookFunc() {
-  scrollTo({
-    left: 0,
-    top: 1500,
-    behavior: "smooth",
-  });
+  let bookBox = document.querySelector('.rooms-aside__rooms-book')
+  if(bookBox) {
+    scrollTo({
+      left: 0,
+      top: bookBox.getBoundingClientRect().top + window.scrollY,
+      behavior: "smooth",
+    });
+  }
 }
 function onScrollToRoomsFunc() {
   let roomsBox = document.querySelector(".rooms-aside__rooms-slide");
