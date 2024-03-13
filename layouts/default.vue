@@ -6,6 +6,9 @@
   <div class="content-page">
     <NuxtPage/>
   </div>
+  <div class="footer-content">
+    <Footer/>
+  </div>
 </div>
 </template>
 
@@ -23,4 +26,5 @@
 }
 .content-page {
 }
+
 </style>

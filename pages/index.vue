@@ -38,6 +38,9 @@
             <Slider/>
           </div>
           <div class="rooms-aside__rooms-book">
+            <div class="rooms-book__title-box">
+              <h3 class="titles-style">Book Your Room</h3>
+            </div>
             <Book/>
           </div>
         </div>
@@ -106,12 +109,8 @@ if(process.client) {
 #roomTitle {
   transition: all 800ms;
 }
-.rooms-aside__rooms-book {
-  margin-top: 30px;
-  padding: 0 40px;
-  display: flex;
-  justify-content: center;
-}
+
+
 
 
 

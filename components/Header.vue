@@ -22,12 +22,12 @@
             </button>
           </li>
           <li>
-            <button class="header-navbar-list__button" @click="onRouteToRoomsPageFunc"
+            <button class="header-navbar-list__button" @click="onScrollToRoomsFunc"
               >Rooms</button
             >
           </li>
           <li>
-            <button class="header-navbar-list__button">Contacts</button>
+            <button class="header-navbar-list__button" >Contacts</button>
           </li>
         </ul>
       </div>
@@ -48,12 +48,15 @@ function onScrollToBookFunc() {
     behavior: "smooth",
   })
 }
-function onRouteToRoomsPageFunc () {
-  scrollTo({
-    left: 0,
-    top: 1200,
-    behavior: "smooth",
-  })
+function onScrollToRoomsFunc () {
+  let roomsBox = document.querySelector('.rooms-aside__rooms-slide')
+  if(roomsBox) {
+    scrollTo({
+      left: 0,
+      top: roomsBox.getBoundingClientRect().top + window.scrollY - 135,
+      behavior: "smooth",
+    })
+  }
 }
 function onScrollToAboutFunc() {
   if (route.path === "/") {

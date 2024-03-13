@@ -1,5 +1,6 @@
 <template>
   <div class="rooms-book__rooms-book-box">
+
     <div class="rooms-book-box__select-options">
       <div class="select-options__date-input-box">
         <div class="date-input-box__input-section">
