@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="header-content__header-book-room">
-      <button class="header-book-room__button">BOOK NOW</button>
+      <button class="header-book-room__button" @click="onScrollToBookFunc">BOOK NOW</button>
     </div>
   </div>
 </template>
@@ -41,8 +41,19 @@
 <script setup lang="ts">
 const route = useRoute();
 
+function onScrollToBookFunc() {
+  scrollTo({
+    left: 0,
+    top: 1500,
+    behavior: "smooth",
+  })
+}
 function onRouteToRoomsPageFunc () {
-  navigateTo('/rooms')
+  scrollTo({
+    left: 0,
+    top: 1200,
+    behavior: "smooth",
+  })
 }
 function onScrollToAboutFunc() {
   if (route.path === "/") {

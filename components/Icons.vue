@@ -132,7 +132,7 @@ const props = defineProps<{
   iconClass?: string;
 }>();
 const name = ref(props.iconName);
-const styles = ref(props.iconClass)
+const styles = ref(props.iconClass);
 </script>
 
 <style scoped></style>
