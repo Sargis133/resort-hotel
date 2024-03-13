@@ -110,13 +110,24 @@ const userData = ref({
   phone: "",
 });
 const onReserveRoomFunc = () => {
-  console.log(userData.value);
+  for(let key in userData.value) {
+    if(userData.value[key] === '') {
+      return
+    }
+  }
+  if(!errorEmailInput.value) {
+    alert('ok')
+  }
 };
 const changeInputDateFunc = (input: any): void => {
   userData.value.input = input.target.value;
+  let outputDate: any = document.getElementById("max-date");
+  outputDate.min = input.target.value
 };
 const changeOutputDateFunc = (output: any): void => {
   userData.value.output = output.target.value;
+  let inputDate: any = document.getElementById("min-date");
+  inputDate.max = output.target.value
 };
 const onChangeRoomCountFunc = (count: any): void => {
   userData.value.room = count.target.value;
@@ -146,6 +157,7 @@ function setMinDateFunc(): void {
   let month: string = date.getMonth() + 1 + "";
   month = +month < 10 ? "0" + month : month;
   let year: string = date.getFullYear() + "";
+
   if (minDate && maxDate) {
     minDate.min = `${year}-${month}-${day}`;
     maxDate.min = `${year}-${month}-${day}`;
