@@ -109,7 +109,6 @@
 </template>
 
 <script setup lang="ts">
-import Modal from "~/components/Modal.vue";
 
 let isShowModal = ref(false)
 
@@ -338,5 +337,38 @@ onMounted(() => setMinDateFunc());
 }
 .reserve-button-box__button:hover {
   background-color: rgba(178, 146, 74, 0.8);
+}
+
+@media screen and (max-width: 1200px) {
+  .rooms-book__rooms-book-box {
+    width: 70vw;
+  }
+  .rooms-book-box__select-options {
+    width: 500px;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 20px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .rooms-book-box__user-data-box {
+    width: 500px;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 20px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  .rooms-book-box__select-options {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+  }
+  .rooms-book-box__user-data-box {
+    grid-template-columns: 1fr;
+  }
+  .user-data-input {
+    width: 55vw;
+  }
 }
 </style>

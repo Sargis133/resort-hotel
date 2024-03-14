@@ -53,7 +53,6 @@
 <script setup lang="ts">
 import {onRotatePalmFunc} from "~/components/templates/index/utils/rotatePalm";
 import {onShowTtitleFunc} from "~/components/templates/index/utils/showTitles";
-import Modal from "~/components/Modal.vue";
 
 onMounted(() => onShowTtitleFunc('firstTitle', 'show'))
 
@@ -113,7 +112,11 @@ if(process.client) {
 
 
 
-
+@media screen and (max-width: 1024px) {
+  .titles-style {
+    font-size: 30px;
+  }
+}
 
 
 
