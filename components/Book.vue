@@ -17,6 +17,7 @@
           <input
             id="max-date"
             class="input-section__input"
+            :class="{'inputError': userDataError.output}"
             type="date"
             @input="changeOutputDateFunc"
           />
@@ -97,9 +98,20 @@
       </div>
     </div>
   </div>
+  <template v-if="isShowModal">
+    <Modal title="Reserved" @close-modal="onCloseModalFunc">
+      <template #body>
+        You reserved Room
+      </template>
+    </Modal>
+  </template>
 </template>
 
 <script setup lang="ts">
+import Modal from "~/components/Modal.vue";
+
+let isShowModal = ref(false)
+
 const userDataError = ref<any>({
   input: false,
   output: false,
@@ -117,13 +129,16 @@ const userData = ref<any>({
   email: "",
   phone: "",
 });
+function onCloseModalFunc() {
+  isShowModal.value = false
+}
 const onReserveRoomFunc = () => {
   for (let key in userData.value) {
     if (key === "pet") continue;
     userDataError.value[key] = userData.value[key] === "";
   }
   if(Object.values(userDataError.value).filter(item => !item).length === 6) {
-    alert('ok')
+    isShowModal.value = true
   }
 };
 const changeInputDateFunc = (input: any): void => {
