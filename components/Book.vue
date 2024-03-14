@@ -1,6 +1,5 @@
 <template>
   <div class="rooms-book__rooms-book-box">
-
     <div class="rooms-book-box__select-options">
       <div class="select-options__date-input-box">
         <div class="date-input-box__input-section">
@@ -25,7 +24,7 @@
         </div>
       </div>
       <div class="select-options__room-select-box">
-        <select class="room-select-box__select" @change="onChangeRoomCountFunc">
+        <select class="room-select-box__select" :class="{'errorInput': userDataError.room}" @change="onChangeRoomCountFunc">
           <option selected disabled>Room Count</option>
           <option value="1">1 Room</option>
           <option value="2">2 Room</option>
@@ -64,6 +63,7 @@
       <div class="user-data-box__name-box">
         <input
           class="user-data-input"
+          :class="{ errorInput: userDataError.name }"
           placeholder="Name"
           type="text"
           v-model="userData.name"
@@ -73,7 +73,7 @@
       <div class="user-data-box__email-box">
         <input
           class="user-data-input"
-          :class="{'errorInput': errorEmailInput}"
+          :class="{ errorInput: userDataError.email }"
           placeholder="Email"
           type="text"
           v-model="userData.email"
@@ -83,6 +83,7 @@
       <div class="user-data-box__phone-box">
         <input
           class="user-data-input"
+          :class="{ errorInput: userDataError.phone }"
           placeholder="Phone"
           type="text"
           v-model="userData.phone"
@@ -99,8 +100,15 @@
 </template>
 
 <script setup lang="ts">
-let errorEmailInput = ref(false)
-const userData = ref({
+const userDataError = ref<any>({
+  input: false,
+  output: false,
+  room: false,
+  name: false,
+  email: false,
+  phone: false,
+});
+const userData = ref<any>({
   input: "",
   output: "",
   room: "",
@@ -110,24 +118,23 @@ const userData = ref({
   phone: "",
 });
 const onReserveRoomFunc = () => {
-  for(let key in userData.value) {
-    if(userData.value[key] === '') {
-      return
-    }
+  for (let key in userData.value) {
+    if (key === "pet") continue;
+    userDataError.value[key] = userData.value[key] === "";
   }
-  if(!errorEmailInput.value) {
+  if(Object.values(userDataError.value).filter(item => !item).length === 6) {
     alert('ok')
   }
 };
 const changeInputDateFunc = (input: any): void => {
   userData.value.input = input.target.value;
   let outputDate: any = document.getElementById("max-date");
-  outputDate.min = input.target.value
+  outputDate.min = input.target.value;
 };
 const changeOutputDateFunc = (output: any): void => {
   userData.value.output = output.target.value;
   let inputDate: any = document.getElementById("min-date");
-  inputDate.max = output.target.value
+  inputDate.max = output.target.value;
 };
 const onChangeRoomCountFunc = (count: any): void => {
   userData.value.room = count.target.value;
@@ -137,17 +144,17 @@ const onHavePetFunc = (e: any): void => {
 };
 const nameValidateFunc = (input: any): void => {
   let value = input.target.value;
-  userData.value.name = value.replace(/[^+[A-Za-z]/g, '')
+  userData.value.name = value.replace(/[^+[A-Za-z]/g, "");
 };
 const emailValidateFunc = (input: any): void => {
   let val = input.target.value;
-  let reg = /^[A-Za-z0-9]+(@gmail.com)|(@mail.ru)$/g
-  setTimeout(() => errorEmailInput.value = val && !reg.test(val), 500)
-}
-const phoneValidateFunc = (input: any):void => {
-  let value = input.target.value
-  userData.value.phone = value.replace(/[^+\d]/g, '')
-}
+  let reg = /^[A-Za-z0-9]+(@gmail.com)|(@mail.ru)$/g;
+  setTimeout(() => (userDataError.value.email = val && !reg.test(val)), 500);
+};
+const phoneValidateFunc = (input: any): void => {
+  let value = input.target.value;
+  userData.value.phone = value.replace(/[^+\d]/g, "");
+};
 function setMinDateFunc(): void {
   let minDate: any = document.getElementById("min-date");
   let maxDate: any = document.getElementById("max-date");
@@ -293,7 +300,6 @@ onMounted(() => setMinDateFunc());
   color: whitesmoke;
   outline: none;
   transition: box-shadow 500ms;
-
 }
 .user-data-input:focus {
   box-shadow: 0 0 1px 1px white;
