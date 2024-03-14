@@ -6,6 +6,7 @@
           <input
             id="min-date"
             class="input-section__input"
+            :class="{'errorInput': userDataError.input}"
             type="date"
             @input="changeInputDateFunc"
           />
@@ -17,7 +18,7 @@
           <input
             id="max-date"
             class="input-section__input"
-            :class="{'inputError': userDataError.output}"
+            :class="{'errorInput': userDataError.output}"
             type="date"
             @input="changeOutputDateFunc"
           />
@@ -101,7 +102,7 @@
   <template v-if="isShowModal">
     <Modal title="Reserved" @close-modal="onCloseModalFunc">
       <template #body>
-        You reserved Room
+        You have successfully reserved a room, our employee will contact you
       </template>
     </Modal>
   </template>
