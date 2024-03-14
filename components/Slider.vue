@@ -31,17 +31,21 @@ let sliderImages = ref([
 ]);
 
 function slideToRightFunc() {
+  let image = document.querySelector('.slider-image')
+  let imageWidth = image?.clientWidth
   let elem: HTMLElement | null = document.getElementById('slider-images-box')
-  if(elem) elem.scrollLeft += 240
+  if(elem && imageWidth) elem.scrollLeft += imageWidth - 100
 }
 function slideToLeftFunc() {
+  let image = document.querySelector('.slider-image')
+  let imageWidth = image?.clientWidth
   let elem: HTMLElement | null = document.getElementById('slider-images-box')
-  if(elem) {
+  if(elem && imageWidth) {
     if (elem && elem.scrollLeft < 0) {
       elem.scrollLeft = 0;
       return
     }
-    elem.scrollLeft -= 240
+    elem.scrollLeft -= imageWidth - 100
   }
 }
 
