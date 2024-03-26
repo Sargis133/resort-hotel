@@ -19,7 +19,7 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.9);
 }
@@ -27,6 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-items: center;
   height: 100%;
 }
 .loader-box__loader {

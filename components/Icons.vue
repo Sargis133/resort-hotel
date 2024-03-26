@@ -2,15 +2,20 @@
   <template v-if="name === 'arrowRight'">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="80px"
+      fill="white"
       height="80px"
-      fill="#000000"
-      viewBox="0 0 1024 1024"
-      :style="styles"
+      width="80px"
+      id="Layer_1"
+      viewBox="0 0 512.005 512.005"
+      xml:space="preserve"
     >
-      <path
-        d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-      />
+      <g>
+        <g>
+          <path
+            d="M388.418,240.923L153.751,6.256c-8.341-8.341-21.824-8.341-30.165,0s-8.341,21.824,0,30.165L343.17,256.005    L123.586,475.589c-8.341,8.341-8.341,21.824,0,30.165c4.16,4.16,9.621,6.251,15.083,6.251c5.461,0,10.923-2.091,15.083-6.251    l234.667-234.667C396.759,262.747,396.759,249.264,388.418,240.923z"
+          />
+        </g>
+      </g>
     </svg>
   </template>
   <template v-else-if="name === 'arrowLeft'">
@@ -264,6 +269,72 @@
             d="M225.638355,208 L202.649232,208 C201.185673,208 200,206.813592 200,205.350603 L200,162.649211 C200,161.18585 201.185859,160 202.649232,160 L245.350955,160 C246.813955,160 248,161.18585 248,162.649211 L248,205.350603 C248,206.813778 246.813769,208 245.350955,208 L233.119305,208 L233.119305,189.411755 L239.358521,189.411755 L240.292755,182.167586 L233.119305,182.167586 L233.119305,177.542641 C233.119305,175.445287 233.701712,174.01601 236.70929,174.01601 L240.545311,174.014333 L240.545311,167.535091 C239.881886,167.446808 237.604784,167.24957 234.955552,167.24957 C229.424834,167.24957 225.638355,170.625526 225.638355,176.825209 L225.638355,182.167586 L219.383122,182.167586 L219.383122,189.411755 L225.638355,189.411755 L225.638355,208 L225.638355,208 Z"
             id="Facebook"
           ></path>
+        </g>
+      </g>
+    </svg>
+  </template>
+  <template v-else-if="iconName === 'burger'">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="50px"
+      height="40px"
+      viewBox="0 0 24 24"
+      fill="white"
+    >
+      <path
+        d="M4 6H20M4 12H14M4 18H9"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </template>
+  <template v-else-if="iconName === 'close'">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="50px"
+      height="50"
+      viewBox="0 0 24 24"
+      version="1.1"
+    >
+      <title>Close</title>
+      <g
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g id="Close">
+          <rect
+            id="Rectangle"
+            fill-rule="nonzero"
+            x="0"
+            y="0"
+            width="24"
+            height="24"
+          ></rect>
+          <line
+            x1="16.9999"
+            y1="7"
+            x2="7.00001"
+            y2="16.9999"
+            id="Path"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+          ></line>
+          <line
+            x1="7.00006"
+            y1="7"
+            x2="17"
+            y2="16.9999"
+            id="Path"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+          ></line>
         </g>
       </g>
     </svg>

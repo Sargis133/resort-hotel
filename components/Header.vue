@@ -80,16 +80,42 @@
         BOOK NOW
       </button>
     </div>
+    <div class="header-content__burger-menu">
+      <button class="burger-menu__icon-button" @click="onOpenBurgerMenuFunc">
+        <icons icon-name="burger" />
+      </button>
+      <div class="burger-menu__burger-items-box" :class="{'show-burger-menu': isShowBurgerMenu}">
+        <div class="burger-items-box__close-burger-button">
+          <button class="close-burger-button__button" @click="onCloseBurgerMenu">
+            <icons icon-name="close"/>
+          </button>
+        </div>
+        <ul class="burger-items-box__burger-items-list">
+          <li><button @click="onScrollToAboutFunc" class="burger-items-list__button">About</button></li>
+          <li><button @click="onScrollToRoomsFunc" class="burger-items-list__button">Rooms</button></li>
+          <li><button @click="onScrollToBookFunc" class="burger-items-list__button">Book Now</button></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
 
+let isShowBurgerMenu = ref(false)
 let isShowContacts = ref(false);
+
+function onOpenBurgerMenuFunc() {
+  isShowBurgerMenu.value = true
+}
+function onCloseBurgerMenu() {
+  isShowBurgerMenu.value = false
+}
 function onShowContactsFunc() {
   isShowContacts.value = !isShowContacts.value;
 }
+
 function onScrollToTopFunc() {
   scrollTo({
     left: 0,
@@ -226,6 +252,51 @@ function onScrollToAboutFunc() {
 .header-navbar-list__contacts-box {
   position: relative;
 }
+.header-content__burger-menu {
+  display: none;
+  position: relative;
+}
+.burger-menu__icon-button {
+  background-color: transparent;
+  border: none;
+}
+.show-burger-menu {
+  right: -10px !important;
+}
+.burger-menu__burger-items-box {
+  transition: right 1s;
+  position: absolute;
+  z-index: 80;
+  right: -200px;
+  top: -10px;
+  padding: 10px;
+  min-width: 150px;
+  height: max-content;
+  background-color: rgba(0,0,0, 0.8);
+}
+.burger-items-box__close-burger-button {
+  display: flex;
+  justify-content: end;
+}
+.close-burger-button__button {
+  background-color: transparent;
+  border: none;
+}
+.burger-items-box__burger-items-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+}
+.burger-items-list__button {
+  background-color: transparent;
+  border: none;
+  color: whitesmoke;
+  font-family: sans-serif;
+  font-size: 16px;
+  text-decoration: underline;
+}
 .contacts-options-box__contact-item {
   padding: 5px;
 }
@@ -238,5 +309,14 @@ function onScrollToAboutFunc() {
 }
 .contact-item__link:hover {
   opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .header-content__header-navbar-aside, .header-content__header-book-room {
+    display: none;
+  }
+  .header-content__burger-menu {
+    display: block;
+  }
 }
 </style>

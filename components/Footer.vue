@@ -50,4 +50,11 @@
   font-size: 14px;
   font-style: italic;
 }
+@media (max-width: 425px) {
+  .footer-items-list__items-list {
+    flex-direction: column;
+    row-gap: 5px;
+    align-items: center;
+  }
+}
 </style>

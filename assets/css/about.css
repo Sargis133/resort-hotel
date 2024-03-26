@@ -68,3 +68,17 @@
     top: 0;
     right: -36px;
 }
+@media (max-width: 768px) {
+    .about-palm-left {
+        width: 37vw;
+    }
+}
+@media (max-width: 600px) {
+    .about-content {
+        height: auto;
+        min-height: 100vh;
+    }
+    .about-palm-left, .about-palm-right {
+        width: 42vw;
+    }
+}

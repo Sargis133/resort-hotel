@@ -196,7 +196,7 @@ onMounted(() => setMinDateFunc());
 
 .rooms-book__rooms-book-box {
   border: 1px solid white;
-  padding: 2vh 6vw;
+  padding: 2vh 4vw;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   display: flex;
@@ -204,7 +204,7 @@ onMounted(() => setMinDateFunc());
   align-items: center;
   justify-content: center;
   row-gap: 20px;
-  width: 90%;
+  min-width: 90%;
 }
 .rooms-book-box__select-options {
   width: 100%;
@@ -303,6 +303,7 @@ onMounted(() => setMinDateFunc());
 .rooms-book-box__user-data-box {
   width: 100%;
   display: grid;
+  grid-column-gap: 10px;
   grid-template-columns: repeat(4, 1fr);
   padding: 8px 0;
 }
@@ -339,36 +340,26 @@ onMounted(() => setMinDateFunc());
   background-color: rgba(178, 146, 74, 0.8);
 }
 
-@media screen and (max-width: 1200px) {
-  .rooms-book__rooms-book-box {
-    width: 70vw;
-  }
-  .rooms-book-box__select-options {
-    width: 500px;
-    grid-template-columns: 1fr 1fr;
-    grid-row-gap: 20px;
-    justify-content: center;
-    margin: 0 auto;
-  }
-  .rooms-book-box__user-data-box {
-    width: 500px;
-    grid-template-columns: 1fr 1fr;
-    grid-row-gap: 20px;
-    justify-content: center;
-    margin: 0 auto;
-  }
-}
+
 @media screen and (max-width: 768px) {
   .rooms-book-box__select-options {
     width: 100%;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 10px;
+    justify-items: center;
+    grid-row-gap: 20px;
   }
   .rooms-book-box__user-data-box {
     grid-template-columns: 1fr;
+    justify-items: center;
+    grid-row-gap: 20px;
   }
   .user-data-input {
     width: 55vw;
+  }
+}
+@media (max-width: 425px) {
+  .rooms-book-box__select-options {
+    grid-template-columns: 1fr;
   }
 }
 </style>

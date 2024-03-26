@@ -94,4 +94,21 @@ function slideToLeftFunc() {
   width: 50vw;
   height: 100%;
 }
+
+@media (max-width: 600px) {
+  .slider-left-btn, .slider-right-btn {
+    width: 65px;
+    display: flex;
+    align-items: center;
+  }
+  .slider-images-content {
+    max-width: 90vw;
+    width: 100%;
+    padding: 0 20px;
+  }
+  .slider-box {
+    display: grid;
+    grid-template-columns: 65px auto 65px;
+  }
+}
 </style>
