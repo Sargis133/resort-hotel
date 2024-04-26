@@ -23,11 +23,11 @@
 import Icons from "~/components/Icons.vue";
 
 let sliderImages = ref([
-  "/rooms/2-room(1).jpg",
-  "/rooms/2-room(2).jpg",
-  "/rooms/2-room(3).jpg",
-  "/rooms/2-room(4).jpg",
-  '/rooms/2-room(5).jpg'
+  "images/rooms/2-room(1).jpg",
+  "images/rooms/2-room(2).jpg",
+  "images/rooms/2-room(3).jpg",
+  "images/rooms/2-room(4).jpg",
+  'images/rooms/2-room(5).jpg'
 ]);
 
 function slideToRightFunc() {
